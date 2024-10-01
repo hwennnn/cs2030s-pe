@@ -5,14 +5,15 @@
  * @author A0308382A
  */
 
-class Operand<T> {
-  private final T value;
+class Operand implements Expression {
+  private final Object value;
 
-  public Operand(T value) {
+  public Operand(Object value) {
     this.value = value;
   }
 
-  public T eval() {
+  @Override
+  public Object eval() {
     return this.value;
   }
 }

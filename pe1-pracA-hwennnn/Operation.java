@@ -5,51 +5,34 @@
  * @author A0308382A
  */
 
-abstract class Operation {
-  private Operand<?> o1;
-  private Operand<?> o2;
+abstract class Operation implements Expression {
+  private Expression o1;
+  private Expression o2;
 
-  public Operation(Operand<?> o1, Operand<?> o2) {
+  public Operation(Expression o1, Expression o2) {
     this.o1 = o1;
     this.o2 = o2;
   }
 
-  public Operand<?> getFirst() {
+  public Expression getFirst() {
     return this.o1;
   }
 
-  public Operand<?> getSecond() {
+  public Expression getSecond() {
     return this.o2;
   }
 
-  abstract Object eval() throws InvalidOperandException;
-
-  public static Operation of(char operand, Object o1, Object o2) {
-    Operand<?> oper1 = null;
-    Operand<?> oper2 = null;
-
-    if (o1 instanceof Operand<?>) {
-      oper1 = (Operand<?>) o1;
-    } else if (o1 instanceof Operation operation1) {
-      oper1 = new Operand(operation1.eval());
-    }
-
-    if (o2 instanceof Operand<?>) {
-      oper2 = (Operand<?>) o2;
-    } else if (o2 instanceof Operation operation2) {
-      oper2 = new Operand(operation2.eval());
-    }
-
-    if (oper1 == null || oper2 == null) {
+  public static Operation of(char operand, Expression o1, Expression o2) {
+    if (o1 == null || o2 == null) {
       return null;
     }
 
     if (operand == '*') {
-      return new MultiplyOperation(operand, oper1, oper2);
+      return new MultiplyOperation(operand, o1, o2);
     } else if (operand == '+') {
-      return new ConcatenateOperation(operand, oper1, oper2);
+      return new ConcatenateOperation(operand, o1, o2);
     } else if (operand == '^') {
-      return new XorOperation(operand, oper1, oper2);
+      return new XorOperation(operand, o1, o2);
     }
 
     return null;

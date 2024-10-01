@@ -6,7 +6,7 @@
 class ConcatenateOperation extends Operation {
   private final char operand;
   
-  public ConcatenateOperation(char operand, Operand<?> o1, Operand<?> o2) {
+  public ConcatenateOperation(char operand, Expression o1, Expression o2) {
     super(o1, o2);
     this.operand = operand;
   }
