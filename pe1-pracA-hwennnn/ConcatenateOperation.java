@@ -16,13 +16,10 @@ class ConcatenateOperation extends Operation {
     Object first = super.getFirst().eval();
     Object second = super.getSecond().eval();
 
-    if (!(first instanceof String) || !(second instanceof String)) {
-      throw new InvalidOperandException(this.operand);
+    if ((first instanceof String o1) && (second instanceof String o2)) {
+      return o1 + o2;
     }
 
-    String o1 = (String) first;
-    String o2 = (String) second;
-
-    return o1 + o2;
+    throw new InvalidOperandException(this.operand);
   }
 }

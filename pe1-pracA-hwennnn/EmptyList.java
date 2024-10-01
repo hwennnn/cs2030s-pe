@@ -40,12 +40,12 @@ public class EmptyList<T> implements SourceList<T> {
   }
 
   @Override
-  public EmptyList<T> filter(BooleanCondition<T> obj) {
+  public EmptyList<T> filter(BooleanCondition<? super T> obj) {
     return new EmptyList<>();
   }
 
   @Override
-  public <U> SourceList<U> map(Transformer<? super T, ? extends U> tf) {
+  public <U> EmptyList<U> map(Transformer<? super T, ? extends U> tf) {
     return new EmptyList<>();
   }
 }

@@ -51,7 +51,7 @@
   }
 
   @Override
-  public SourceList<T> filter(BooleanCondition<T> obj) {
+  public SourceList<T> filter(BooleanCondition<? super T> obj) {
     if (obj.test(this.first)) {
      return new Pair<>(this.first, this.second.filter(obj)); 
     }

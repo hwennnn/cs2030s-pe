@@ -17,15 +17,11 @@ class MultiplyOperation extends Operation {
     Object first = super.getFirst().eval();
     Object second = super.getSecond().eval();
 
-    if (!(first instanceof Integer) || !(second instanceof Integer)) {
-      throw new InvalidOperandException(this.operand);
+    if ((first instanceof Integer o1) && (second instanceof Integer o2)) {
+      return o1 * o2;
     }
 
-    int o1 = (Integer) first;
-    int o2 = (Integer) second;
-    int res = o1 * o2;
-
-    return res;
+    throw new InvalidOperandException(this.operand);
   }
   
 }

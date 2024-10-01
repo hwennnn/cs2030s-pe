@@ -17,14 +17,11 @@ class XorOperation extends Operation {
     Object first = super.getFirst().eval();
     Object second = super.getSecond().eval();
 
-    if (!(first instanceof Boolean) || !(second instanceof Boolean)) {
-      throw new InvalidOperandException(this.operand);
+    if ((first instanceof Boolean o1) && (second instanceof Boolean o2)) {
+      return o1 ^ o2;
     }
 
-    Boolean o1 = (Boolean) first;
-    Boolean o2 = (Boolean) second;
-
-    return o1 ^ o2;
+    throw new InvalidOperandException(this.operand);
   }
 }
 
