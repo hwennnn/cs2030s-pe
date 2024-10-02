@@ -41,11 +41,11 @@ do
       then
         if [ "$(diff -bB "$out" outputs/$PROG.$i.out | wc -l)" -ne 0 ] 
         then
-          echo "test $i: ${description[$i]}.. failed"
+          echo "test $i: failed"
           #cat inputs/$PROG.$i.in
           num_failed=$((num_failed + 1))
         else
-          echo "test $i: ${description[$i]}.. ok"
+          echo "test $i: ok"
         fi
         rm -f "$out"
       else
