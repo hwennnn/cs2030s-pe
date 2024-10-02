@@ -30,10 +30,6 @@
 
   @Override
   public int length() {
-    if (this.first instanceof EmptyList<?>) {
-      return 0;
-    }
-
     return 1 + this.second.length();
   }
 
