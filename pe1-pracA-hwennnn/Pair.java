@@ -1,10 +1,8 @@
 /**
- * CS2030S PE1 Question 2
- * AY20/21 Semester 2
- *
  * @author A0308382A
- */
- public class Pair<T> implements SourceList<T> {
+ */ 
+
+public class Pair<T> implements SourceList<T> {
   private T first;
   private SourceList<T> second;
 
@@ -49,7 +47,7 @@
   @Override
   public SourceList<T> filter(BooleanCondition<? super T> obj) {
     if (obj.test(this.first)) {
-     return new Pair<>(this.first, this.second.filter(obj)); 
+      return new Pair<>(this.first, this.second.filter(obj)); 
     }
 
     return this.second.filter(obj);

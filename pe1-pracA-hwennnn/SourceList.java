@@ -6,8 +6,12 @@
  */
 interface SourceList<T> {
   T getFirst();
+
   SourceList<T> getSecond();
+
   int length();
+
   SourceList<T> filter(BooleanCondition<? super T> condition);
+
   <U> SourceList<U> map(Transformer<? super T, ? extends U> tf);
 }
