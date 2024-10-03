@@ -5,26 +5,26 @@
  */
 
 class AnytimeTask extends Task {
-  
+
   public AnytimeTask(String description) {
     super(description);
   }
 
   @Override
-  public void printTaskDetails() {
+  public String printTaskDetails() {
     String str = String.format("%s", super.toString());
 
-    System.out.println(str);
+    return str;
   }
 
   @Override
-  public void printDueToday() {
-
+  public String printDueToday() {
+    return null;
   }
 
   @Override
-  public void remindTask() {
-
+  public String remindTask() {
+    return null;
   }
 
   @Override

@@ -4,50 +4,32 @@
  *
  */
 
-class AssignableTask extends Task {
-  private final int dueInDays;
+class AssignableTask extends DeadlineTask {
   private final String assignees;
   
   public AssignableTask(String description, int dueInDays, String assignees) {
-    super(description);
-    this.dueInDays = dueInDays;
+    super(description, dueInDays);
     this.assignees = assignees;
   }
 
   @Override
-  public void printTaskDetails() {
-    String str = String.format("%s | Due in %d days | Assigned to %s", 
-        super.toString(), this.dueInDays, this.assignees);
+  public String printTaskDetails() {
+    String str = String.format("%s | Assigned to %s", 
+        super.printTaskDetails(), this.assignees);
 
-    System.out.println(str);
+    return str;
   }
 
   @Override
-  public void printDueToday() {
-    if (this.dueInDays != 0) {
-      return;
-    }
-
-    String str = String.format("%s | Due in %d days", super.toString(),
-        this.dueInDays);
-
-    System.out.println(str);
-  }
-
-  @Override
-  public void remindTask() {
+  public String remindTask() {
     if (super.isTaskCompleted()) {
-      return;
+      return null;
     }
 
     String str = String.format("Sending a reminder to complete \"%s\" to %s",
         super.getDescription(), this.assignees);
 
-    System.out.println(str);
+    return str;
   }
 
-  @Override
-  public int getRewardPoints() {
-    return super.isTaskCompleted() ? this.dueInDays : 0;
-  }
 }

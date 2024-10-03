@@ -13,34 +13,34 @@ class DeadlineTask extends Task {
   }
 
   @Override
-  public void printTaskDetails() {
+  public String printTaskDetails() {
     String str = String.format("%s | Due in %d days", super.toString(),
         this.dueInDays);
 
-    System.out.println(str);
+    return str;
   }
 
   @Override
-  public void printDueToday() {
+  public String printDueToday() {
     if (this.dueInDays != 0) {
-      return;
+      return null;
     }
 
     String str = String.format("%s | Due in %d days", super.toString(),
         this.dueInDays);
 
-    System.out.println(str);
+    return str;
   }
 
   @Override
-  public void remindTask() {
+  public String remindTask() {
     if (super.isTaskCompleted()) {
-      return;
+      return null;
     }
 
     String str = String.format("The task \"%s\" is due in %d days", super.getDescription(), this.dueInDays);
 
-    System.out.println(str);
+    return str;
   }
 
   @Override

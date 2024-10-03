@@ -50,21 +50,21 @@ abstract class Task {
     return this.isCompleted;
   }
 
-  public void printTaskDescriptions() {
+  public String printTaskDescriptions() {
     String str = String.format("%s %s", this.id, this.description);
 
-    System.out.println(str);
+    return str;
   }
   
-  abstract public void printTaskDetails();
+  abstract public String printTaskDetails();
 
   public void complete() {
     this.isCompleted = true;
   }
 
-  abstract public void printDueToday();
+  abstract public String printDueToday();
 
-  abstract public void remindTask();
+  abstract public String remindTask();
 
   abstract public int getRewardPoints();
 

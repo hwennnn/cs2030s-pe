@@ -67,7 +67,10 @@ class TaskList {
    **/
   public void printTaskDescriptions() {
     for (int i = 0; i < this.numOfTasks; i++) {
-      this.tasks.get(i).printTaskDescriptions();
+      String str = this.tasks.get(i).printTaskDescriptions();
+      if (str != null) {
+        System.out.println(str);
+      }
     }
   }
 
@@ -76,7 +79,10 @@ class TaskList {
    **/
   public void printTaskDetails() {
     for (int i = 0; i < this.numOfTasks; i++) {
-      this.tasks.get(i).printTaskDetails();
+      String str = this.tasks.get(i).printTaskDetails();
+      if (str != null) {
+        System.out.println(str);
+      }
     }
   }
 
@@ -98,7 +104,10 @@ class TaskList {
    **/
   public void printDueToday() {
     for (int i = 0; i < this.numOfTasks; i++) {
-      this.tasks.get(i).printDueToday();
+      String str = this.tasks.get(i).printDueToday();
+      if (str != null) {
+        System.out.println(str);
+      }
     }
   }
 
@@ -107,7 +116,10 @@ class TaskList {
    */
   public void remindAll() {
     for (int i = 0; i < this.numOfTasks; i++) {
-      this.tasks.get(i).remindTask();
+      String str = this.tasks.get(i).remindTask();
+      if (str != null) {
+        System.out.println(str);
+      }
     }
   }
 
