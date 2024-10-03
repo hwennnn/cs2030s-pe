@@ -38,7 +38,8 @@ class DeadlineTask extends Task {
       return null;
     }
 
-    String str = String.format("The task \"%s\" is due in %d days", super.getDescription(), this.dueInDays);
+    String str = String.format("The task \"%s\" is due in %d days", 
+        super.getDescription(), this.dueInDays);
 
     return str;
   }

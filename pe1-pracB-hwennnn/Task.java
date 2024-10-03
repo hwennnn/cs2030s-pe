@@ -56,17 +56,17 @@ abstract class Task {
     return str;
   }
   
-  abstract public String printTaskDetails();
+  public abstract String printTaskDetails();
 
   public void complete() {
     this.isCompleted = true;
   }
 
-  abstract public String printDueToday();
+  public abstract String printDueToday();
 
-  abstract public String remindTask();
+  public abstract String remindTask();
 
-  abstract public int getRewardPoints();
+  public abstract int getRewardPoints();
 
   @Override
   public String toString() {
