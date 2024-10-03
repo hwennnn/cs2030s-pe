@@ -11,11 +11,11 @@ class BusEvent extends Event {
 
   private static final double INTER_STOP_TRAVEL_TIME = 1.0;
 
-  public BusEvent(double time, Bus bus, Stop stop, School school) {
+  public BusEvent(double time, Bus bus, School school) {
     super(time);
     this.bus = bus;
-    this.stop = stop;
     this.school = school;
+    this.stop = this.school.getBusStop(this.bus.getCurrentStop());
   }
 
   @Override
@@ -27,16 +27,15 @@ class BusEvent extends Event {
         this.bus.board(this.stop.removePassenger());
       }
     } catch (CannotBoardException exception) {
-
+      // Handle exception
     }
 
     this.bus.move();
 
-    Stop nextStop = this.school.getBusStop(this.bus.getCurrentStop());
     double newTime = super.getTime() + BusEvent.INTER_STOP_TRAVEL_TIME;
 
     return new Event[] {
-      new BusEvent(newTime, this.bus, nextStop, this.school)
+      new BusEvent(newTime, this.bus, this.school)
     };
   }
 

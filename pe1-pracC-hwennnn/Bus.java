@@ -44,7 +44,7 @@ class Bus {
     if (this.currentCapacity == this.maxCapacity || 
         !this.queue[destinationId].enq(passenger)) {
       throw new CannotBoardException("Bus is full"); 
-        }
+    }
 
     this.currentCapacity++;
     return this;

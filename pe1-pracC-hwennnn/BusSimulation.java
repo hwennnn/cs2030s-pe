@@ -37,15 +37,13 @@ class BusSimulation extends Simulation {
     }
 
     this.school = new School(stops);
-    Stop initialStop = this.school.getBusStop(0);
-
     int id = 0;
 
     for (int i = 0; i < numBuses; i++) {
       double leaveTime = sc.nextDouble();
       int capacity = sc.nextInt();
       Bus bus = new Bus(capacity, numStops);
-      initEvents[id] = new BusEvent(leaveTime, bus, initialStop, this.school);
+      initEvents[id] = new BusEvent(leaveTime, bus, this.school);
       id += 1;
     }
 
