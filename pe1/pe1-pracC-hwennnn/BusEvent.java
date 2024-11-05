@@ -28,6 +28,7 @@ class BusEvent extends Event {
       }
     } catch (CannotBoardException exception) {
       // Handle exception
+      System.out.println(exception.getMessage());
     }
 
     this.bus.move();

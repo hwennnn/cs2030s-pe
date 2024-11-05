@@ -9,7 +9,7 @@ import java.util.Scanner;
 class BusSimulation extends Simulation {
   private School school;
 
-  public static final double INTER_STOP_TRAVEL_TIME = 1.0;
+  private static final double INTER_STOP_TRAVEL_TIME = 1.0;
 
   /** 
    * The list of passengner and bus events to populate

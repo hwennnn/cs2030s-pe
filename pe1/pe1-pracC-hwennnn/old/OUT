@@ -1,0 +1,121 @@
+---- Design Summary ----
+class ArrivalEvent extends Event {
+  @Override
+  public Event[] simulate();
+  @Override
+  public String toString();
+  public ArrivalEvent(double, Passenger, Stop)
+}
+class Bus {
+  @Override
+  public String toString();
+  public Bus alight();
+  public Bus board(Passenger) throws CannotBoardException;
+  public Bus move();
+  public Bus(int, int)
+  public boolean canPassengerBoard();
+  public int getCurrentStop();
+}
+class BusEvent extends Event {
+  @Override
+  public Event[] simulate();
+  @Override
+  public String toString();
+  public BusEvent(double, Bus, School)
+}
+class BusSimulation extends Simulation {
+  @Override
+  public Event[] getInitialEvents();
+  public BusSimulation(Scanner)
+  public Event[] initEvents;
+}
+class CS2030STest {
+  @FunctionalInterface
+  public interface TryRunnable<E extends Exception> {
+    void run() throws E;
+  }
+  public <E extends Exception> CS2030STest expectCheckedException(String, TryRunnable<E>, E);
+  public <T> CS2030STest expect(String, Supplier<T>, Object);
+  public <T> CS2030STest expectReturn(String, Supplier<T>, Object);
+  public CS2030STest expect(String, Object, Object);
+  public CS2030STest expectCompile(String, String, boolean);
+  public CS2030STest expectException(String, Runnable, Exception);
+  public CS2030STest expectPrint(String, Runnable, String);
+}
+class CannotBoardException extends Exception {
+  public CannotBoardException(String)
+}
+class DepartureEvent extends Event {
+  @Override
+  public Event[] simulate();
+  @Override
+  public String toString();
+  public DepartureEvent(double, Passenger)
+}
+abstract class Event implements Comparable<Event> {
+  @Override
+  public String toString();
+  @Override
+  public int compareTo(Event);
+  abstract public Event[] simulate();
+  public Event(double)
+  public double getTime();
+}
+class PE1 {
+  public static void main(String[]);
+}
+class Passenger {
+  @Override
+  public String toString();
+  public Passenger(int)
+  public boolean hasReachedDestination(int);
+  public int getDestination();
+}
+class Queue<T> {
+  @Override
+  public String toString();
+  boolean isEmpty();
+  boolean isFull();
+  public Queue(int)
+  public T deq();
+  public T peek();
+  public boolean enq(T);
+  public int length();
+}
+class School {
+  public School(Stop[])
+  public Stop getBusStop(int);
+}
+abstract class Simulation {
+  abstract public Event[] getInitialEvents();
+}
+public class Simulator {
+  public Simulator(Simulation)
+  public void run();
+}
+class Stop {
+  @Override
+  public String toString();
+  public Passenger removePassenger();
+  public Stop(int, int)
+  public boolean addPassenger(Passenger);
+  public boolean isEmpty();
+  public boolean isFull();
+}
+class Test1 {
+  public static void main(String[]);
+}
+class Test2 {
+  public static void main(String[]);
+}
+class Test3 {
+  public static void main(String[]);
+}
+
+----- Classes Used -----
+String
+Simulator
+BusSimulation
+Scanner
+Simulation
+
