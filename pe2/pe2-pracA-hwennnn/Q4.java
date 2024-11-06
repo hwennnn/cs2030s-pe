@@ -6,7 +6,7 @@ public class Q4 {
       FruitStall<? extends Fruit> second) {
     List<? extends Fruit> mergedFruits = Stream.concat(first.getFruits().stream(), 
         second.getFruits().stream())
-      .toList();
+        .toList();
 
     return new FruitStall<>(mergedFruits);
   }

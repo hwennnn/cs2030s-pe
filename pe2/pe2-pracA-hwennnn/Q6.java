@@ -5,21 +5,21 @@ class Q6 {
   public static List<FruitStall<Fruit>> consolidateStallsbyType(
       List<FruitStall<? extends Fruit>> fruits) {
     List<? extends Fruit> flatten = fruits.stream()
-      .flatMap(stall -> stall.getFruits().stream())
-      .toList();
+        .flatMap(stall -> stall.getFruits().stream())
+        .toList();
 
     List<String> fruitsNames = flatten.stream()
-      .map(x -> x.getName())
-      .distinct()
-      .sorted()
-      .toList();
+        .map(x -> x.getName())
+        .distinct()
+        .sorted()
+        .toList();
 
     List<FruitStall<Fruit>> res = fruitsNames.stream()
-      .map(name -> new FruitStall<Fruit>(
+        .map(name -> new FruitStall<Fruit>(
             flatten.stream()
-            .filter(x -> x.getName().equals(name)).toList())
-          ).toList();
+            .filter(x -> x.getName().equals(name)).toList()))
+        .toList();
 
     return res;
-      }
+  }
 }
