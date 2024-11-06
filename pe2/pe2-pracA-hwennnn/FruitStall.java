@@ -17,7 +17,7 @@ public class FruitStall<T extends Fruit> {
 
   public List<? extends Fruit> findFruitsByName(String name) {
     return this.fruits.stream()
-      .filter(x -> x.getName() == name)
+      .filter(x -> x.getName().equals(name))
       .toList();
   }
 
