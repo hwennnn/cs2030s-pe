@@ -61,13 +61,14 @@ public class Bank {
    * @param amount the amount of money to transfer
    */
   public void transfer(int from, int to, double amount) {
+    // account balance can be negative :)
     Maybe<Account> fromAccount = findAccount(from)
-      .filter(acct -> acct.getBalance() >= amount && !acct.isClosed());
+        .filter(acct -> acct.getBalance() > 0 && !acct.isClosed());
     Maybe<Account> toAccount = findAccount(to)
-      .filter(acct -> !acct.isClosed());
+        .filter(acct -> !acct.isClosed());
 
     Maybe<Pair<Account, Account>> result = fromAccount
-      .flatMap(f -> toAccount.map(t -> f.transferTo(t, amount)));
+        .flatMap(f -> toAccount.map(t -> f.transferTo(t, amount)));
 
     result.ifPresent(accounts -> 
         this.accounts.put(from, accounts.getFirst()));
@@ -84,7 +85,7 @@ public class Bank {
    */
   public void deposit(int number, double amount) {
     Maybe<Account> account = findAccount(number)
-      .filter(acct -> !acct.isClosed());
+        .filter(acct -> !acct.isClosed());
 
     Maybe<Account> result = account.map(acct -> acct.deposit(amount));
 
@@ -99,7 +100,7 @@ public class Bank {
    */
   public void withdraw(int number, double amount) {
     Maybe<Account> account = findAccount(number)
-      .filter(acct -> !acct.isClosed());
+        .filter(acct -> !acct.isClosed());
 
     Maybe<Account> result = account.map(acct -> acct.withdraw(amount));
 
@@ -114,12 +115,12 @@ public class Bank {
    */
   public void combineBankAccount(int a, int b) {
     Maybe<Account> accountA = findAccount(a)
-      .filter(acct -> !acct.isClosed());
+        .filter(acct -> !acct.isClosed());
     Maybe<Account> accountB = findAccount(b)
-      .filter(acct -> acct.isClosed());
+        .filter(acct -> acct.isClosed());
 
     Maybe<Account> newAccount = accountA
-      .flatMap(acctA -> accountB.map(acctB -> acctA.combine(acctB)));
+        .flatMap(acctA -> accountB.map(acctB -> acctA.combine(acctB)));
 
     newAccount.ifPresent(acct -> this.accounts.put(a, acct));
     newAccount.ifPresent(acct -> this.accounts.remove(b));
@@ -143,7 +144,7 @@ public class Bank {
    */
   public void closeAccount(int number) {
     Maybe<Account> account = findAccount(number)
-      .map(acct -> acct.close());
+        .map(acct -> acct.close());
 
     account.ifPresent(acct -> this.accounts.put(number, acct));
   }
