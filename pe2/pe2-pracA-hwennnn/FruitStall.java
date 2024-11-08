@@ -3,7 +3,7 @@ import java.util.List;
 public class FruitStall<T extends Fruit> {
   private List<T> fruits;
 
-  public FruitStall(List<? extends Fruit> fruits) {
+  public FruitStall(List<? extends T> fruits) {
     /**
      * It is safe to cast `List<? extends Fruit>` to `List<T>` 
      * because `T` is guaranteed to be a subtype of `Fruit`, 
