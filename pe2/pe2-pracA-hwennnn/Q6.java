@@ -2,8 +2,8 @@ import java.util.List;
 import java.util.stream.Stream;
 
 class Q6 {
-  public static List<FruitStall<Fruit>> consolidateStallsbyType(
-      List<FruitStall<? extends Fruit>> fruits) {
+  public static <T extends Fruit> List<FruitStall<Fruit>> consolidateStallsbyType(
+      List<? extends FruitStall<? extends T>> fruits) {
     return fruits.stream()
       .flatMap(stall -> stall.getFruits().stream())
       .map(x -> x.getName())

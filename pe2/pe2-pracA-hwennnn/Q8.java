@@ -3,8 +3,8 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class Q8 {
-  public static List<FruitStall<? extends Fruit>> sortByShortestExpiry(
-      List<FruitStall<? extends Fruit>> fruitStalls) {
+  public static <T extends Fruit> List<FruitStall<? extends T>> sortByShortestExpiry(
+      List<FruitStall<? extends T>> fruitStalls) {
     return fruitStalls.stream()
       .sorted((first, second) -> 
           first.getFruits().stream()

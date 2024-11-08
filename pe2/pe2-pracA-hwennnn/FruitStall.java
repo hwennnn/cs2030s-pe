@@ -1,21 +1,28 @@
 import java.util.List;
 
 public class FruitStall<T extends Fruit> {
-  private List<? extends Fruit> fruits;
+  private List<T> fruits;
 
   public FruitStall(List<? extends Fruit> fruits) {
-    this.fruits = fruits;
+    /**
+     * It is safe to cast `List<? extends Fruit>` to `List<T>` 
+     * because `T` is guaranteed to be a subtype of `Fruit`, 
+     * ensuring type safety at runtime.
+     */
+    @SuppressWarnings("unchecked")
+    List<T> temp = (List<T>) fruits;
+    this.fruits = temp;
   }
 
   public FruitStall() {
     this.fruits = List.of();
   }
 
-  public List<? extends Fruit> getFruits() {
+  public List<T> getFruits() {
     return this.fruits.stream().toList();
   }
 
-  public List<? extends Fruit> findFruitsByName(String name) {
+  public List<T> findFruitsByName(String name) {
     return this.fruits.stream()
       .filter(x -> x.getName().equals(name))
       .toList();
